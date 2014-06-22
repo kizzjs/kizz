@@ -1,8 +1,0 @@
----
-tags:
-  - kizz
-  - github
-  - jade
-templates:
-  *: default.jade
-  atom.xml: atom.jade

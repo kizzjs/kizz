@@ -1,0 +1,25 @@
+{
+    "name": "kizz",
+    "version": "0.0.3",
+    "keywords": ["kizz"],
+    "description": "kizz",
+    "homepage" : "https://github.com/zenozeng/kizz",
+    "bugs": {
+        "url": "https://github.com/zenozeng/kizz/issues",
+        "email": "zenoofzeng@gmail.com"
+    },
+    "license": "GPLv2",
+    "author": {
+        "name": "Zeno Zeng",
+        "email": "zenoofzeng@gmail.com",
+        "url": "https://zenozeng.com"
+    },
+    "dependencies": {
+        "underscore": "latest",
+        "jade": "latest",
+        "js-yaml": "latest",
+        "glob": "latest",
+        "marked": "latest",
+        "coffee-script": "latest"
+    }
+}

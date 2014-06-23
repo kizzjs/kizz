@@ -21,7 +21,7 @@ var routes = function(config, pages) {
                 page: page
             },
             template: "page.jade",
-            target: page.path + ".html"
+            target: page.dir + page.name + ".html"
         });
     });
 

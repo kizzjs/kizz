@@ -6,7 +6,10 @@ var routes = function(config, pages) {
     tags.forEach(function(tag) {
         routes.push({
             globals: {
-                tag: tag
+                title: tag,
+                pages: pages.filter(function(page) {
+                    return page.tags.indexOf(tag) > -1;
+                })
             },
             template: "archives.jade",
             target: "tags/" + tag + ".html"
@@ -20,6 +23,15 @@ var routes = function(config, pages) {
             template: "page.jade",
             target: page.file.dir + page.file.name + ".html"
         });
+    });
+
+    // index.html
+    routes.push({
+        globals: {
+            pages: pages
+        },
+        template: "archives.jade",
+        target: "index.html"
     });
 
     // feed

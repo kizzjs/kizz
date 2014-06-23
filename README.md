@@ -27,7 +27,7 @@ Still coding. The alpha version may come in this summer.
 
 - Flexible and Programmable Routing System
 
-    See config/routes.coffee
+    See config/routes.js
     
 - Search Support
 

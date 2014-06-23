@@ -1,6 +1,8 @@
 # kizz
 
-Simple &amp; Stupid blog system / static site generator
+Relaxing blog system / static site generator
+
+If there’s one word to describe kizz, it is relax. 
 
 ## Status
 

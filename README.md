@@ -36,3 +36,22 @@ Still coding. The alpha version may come in this summer.
 - Feed: Atom
 
 - Jade Templating
+
+## Doc
+
+Every file in content/ is called page.
+Page is an object,
+
+TODO: 标准化
+
+```
+  page =
+    path: path
+    content: content
+    mtime: info.mtime
+    html: marked(content)
+    title: h1 or name
+    name: name
+    type: type
+    tags: guessTags(content, path, globals.config.tags)
+```

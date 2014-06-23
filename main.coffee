@@ -4,7 +4,6 @@ yaml = require 'js-yaml'
 glob = require 'glob'
 marked = require 'marked'
 fs = require 'fs'
-guessTags = require './lib/guess-tags.js'
 
 globals = {}
 
@@ -26,33 +25,40 @@ globals.config = _.extend defaultConfig, config
 #
 ################################
 
-guessTags = (content, path, globalTags) ->
-  globalTags.filter (tag) -> (content+path).indexOf(tag) > -1
-
 types =
   markdown: ["md", "mkd", "markdown"]
   text: ["txt"]
 exts = _.flatten(_.values(types)).join('|')
-
 files = glob.sync "content/*.+(#{exts})"
-globals.pages = files.map (path) ->
-  info = fs.statSync path
-  content = fs.readFileSync path
-  # todo: try to get title from h1
+
+guessTags = (content, path, globalTags) ->
+  globalTags.filter (tag) -> (content+path).indexOf(tag) > -1
+
+getFileInfo = (path) ->
+  stat = fs.statSync path
+  dir = "./#{path}".split('/')
   [name, ext] = path.split('/').pop().split('.')
-  h1 = null
   type = ""
   for key, exts in types
     type = key if exts.indexOf(ext) > -1
-  page =
-    path: path
-    content: content
-    mtime: info.mtime
-    html: marked(content)
-    title: h1 or name
+  file =
+    content: fs.readFileSync path
+    mtime: (new Date(info.mtime)).getTime()
     name: name
+    ext: ext
     type: type
-    tags: guessTags(content, path, globals.config.tags)
+    path: path
+
+globals.pages = files.map (path) ->
+  file = getFileInfo path
+  html = marked(file.content)
+  h1 = html.match(new RegExp("<h1>(.*)</h1>"))
+  page =
+    time: file.mtime
+    content: html
+    title: h1 or file.name
+    tags: guessTags(file.content, path, globals.config.tags)
+    file: file
 
 ################################
 #
@@ -61,15 +67,15 @@ globals.pages = files.map (path) ->
 ################################
 
 compile = (options) ->
-  {data, template, target} = options
+  {template, target} = options
 
   options =
-    globals: _.extend {globals: globals}, data
+    globals: _.extend {site: globals}, options.globals
     pretty: true
 
   jade.renderFile "theme/templates/#{template}", options, (err, html) ->
     throw err if err?
     fs.writeFile output+target, html
 
-routes = require("./config/routes.js")(config, pages)
+routes = require("./config/routes.js")(config, globals.pages)
 routes.forEach (route) -> compile route

@@ -1,42 +1,39 @@
 var routes = function(config, pages) {
-    var tags;
-    tags = config.tags;
-    routes = [];
+    var tags = config.tags;
+    var routes = [];
 
     // tags
     tags.forEach(function(tag) {
         routes.push({
-            data: {
+            globals: {
                 tag: tag
             },
-            template: "tag.jade",
+            template: "archives.jade",
             target: "tags/" + tag + ".html"
         });
     });
 
-    // articles
+    // pages (files in content/)
     pages.forEach(function(page) {
         routes.push({
-            data: {
-                page: page
-            },
+            globals: page,
             template: "page.jade",
-            target: page.dir + page.name + ".html"
+            target: page.file.dir + page.file.name + ".html"
         });
     });
 
     // feed
     routes.push({
-        data: {
+        globals: {
             pages: pages
         },
-        template: "atom.jade",
+        template: "atom.xml.jade",
         target: "atom.xml"
     });
 
-    // index.json
+    // index.json (for searching)
     routes.push({
-        data: {
+        globals: {
             pages: pages
         },
         template: "index.json.jade",

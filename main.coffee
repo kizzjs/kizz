@@ -29,13 +29,21 @@ globals.config = _.extend defaultConfig, config
 guessTags = (content, path, globalTags) ->
   globalTags.filter (tag) -> (content+path).indexOf(tag) > -1
 
-files = glob.sync "content/*.+(md|mkd|markdown|txt)"
+types =
+  markdown: ["md", "mkd", "markdown"]
+  text: ["txt"]
+exts = _.flatten(_.values(types)).join('|')
+
+files = glob.sync "content/*.+(#{exts})"
 globals.pages = files.map (path) ->
   info = fs.statSync path
   content = fs.readFileSync path
   # todo: try to get title from h1
   [name, ext] = path.split('/').pop().split('.')
   h1 = null
+  type = ""
+  for key, exts in types
+    type = key if exts.indexOf(ext) > -1
   page =
     path: path
     content: content
@@ -43,7 +51,7 @@ globals.pages = files.map (path) ->
     html: marked(content)
     title: h1 or name
     name: name
-    ext: ext
+    type: type
     tags: guessTags(content, path, globals.config.tags)
 
 ################################

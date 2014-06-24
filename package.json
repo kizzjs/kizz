@@ -20,6 +20,7 @@
         "js-yaml": "latest",
         "glob": "latest",
         "marked": "latest",
-        "coffee-script": "latest"
+        "coffee-script": "latest",
+        "natural": "latest"
     }
 }

@@ -6,8 +6,6 @@ marked = require 'marked'
 fs = require 'fs'
 natural = require 'natural'
 
-globals = {}
-
 ################################
 #
 # Load Config
@@ -18,7 +16,7 @@ defaultConfig =
   tags: []
   output: 'output/'
 config = yaml.safeLoad fs.readFileSync('config/config.yml', 'utf-8')
-globals.config = _.extend defaultConfig, config
+site = _.extend defaultConfig, config
 
 ################################
 #
@@ -61,7 +59,7 @@ getFileInfo = (path) ->
     type: type
     path: path
 
-globals.pages = files.map (path) ->
+site.pages = files.map (path) ->
   file = getFileInfo path
   html = marked(file.content)
   h1 = html.match(new RegExp("<h1>(.*)</h1>"))
@@ -69,7 +67,7 @@ globals.pages = files.map (path) ->
     time: file.mtime
     content: html
     title: h1 or file.name
-    tags: guessTags(file.content, path, globals.config.tags)
+    tags: guessTags(file.content, path, site.tags)
     file: file
 
 ################################
@@ -82,12 +80,12 @@ compile = (options) ->
   {template, target} = options
 
   options =
-    globals: _.extend {site: globals}, options.globals
+    globals: _.extend {site: site}, options.globals
     pretty: true
 
   jade.renderFile "theme/templates/#{template}", options, (err, html) ->
     throw err if err?
     fs.writeFile output+target, html
 
-routes = require("./config/routes.js")(config, globals.pages)
+routes = require("./config/routes.js")(config, site.pages)
 routes.forEach (route) -> compile route

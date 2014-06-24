@@ -1,5 +1,5 @@
-var routes = function(config, pages) {
-    var tags = config.tags;
+var routes = function(site, pages) {
+    var tags = site.tags;
     var routes = [];
 
     // tags

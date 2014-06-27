@@ -65,7 +65,8 @@ site.pages = files.map (path) ->
   h1 = html.match(new RegExp("<h1>(.*)</h1>"))
   page =
     time: file.mtime
-    content: html
+    content: file.content
+    html: html
     title: h1 or file.name
     tags: guessTags(file.content, path, site.tags)
     file: file

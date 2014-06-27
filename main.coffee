@@ -76,6 +76,7 @@ site.pages = files.map (path) ->
 #
 ################################
 
+
 compile = (options) ->
   {template, target} = options
 
@@ -88,4 +89,13 @@ compile = (options) ->
     fs.writeFile output+target, html
 
 routes = require("./config/routes.js")(config, site.pages)
+
+# remove file if its source file is removed
+targets = routes.map (route) -> route.target
+targets_last_time = JSON.parse(fs.readFileSync(".cache/targets.json"))
+fs.writeFileSync(".cache/targets.json", JSON.stringify(targets))
+_.difference(targets_last_time, target).forEach (file) ->
+  fs.unlinkSync file
+
+# compile
 routes.forEach (route) -> compile route

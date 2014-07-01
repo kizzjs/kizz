@@ -14,6 +14,10 @@ Still coding. The alpha version may come in this summer.
 
 - Builtin Markdown Support
 
+- Compiler Cache
+    
+    Only the changed files will be compiled. 
+
 - FileSystem Based Generator
 
     Use file's modified timestamp and filename for date and title

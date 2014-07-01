@@ -12,7 +12,9 @@ Still coding. The alpha version may come in this summer.
 
 - Static
 
-- Builtin Markdown Support
+- Builtin Pandoc / MultiMarkdown Support
+
+    Will use pandoc if avaliable, otherwise Marked will be the Markdown Engine.
 
 - Compiler Cache
     
@@ -28,10 +30,11 @@ Still coding. The alpha version may come in this summer.
     simply define global tags,
     and kizz will automatically figure out tags for each file.
     This is based on the content and path of each file.
+    And great thanks to NaturalNode's general natural language facilities.
 
 - Flexible and Programmable Routing System
 
-    See config/routes.js
+    See config/compile.js
     
 - Search Support
 

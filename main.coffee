@@ -16,7 +16,7 @@ cache = require 'lib/json-obj-cache.js'
 defaultConfig =
   tags: []
   output: 'output/'
-config = yaml.safeLoad fs.readFileSync('config/config.yml', 'utf-8')
+config = require './config/'
 site = _.extend defaultConfig, config
 
 ################################

@@ -1,19 +1,18 @@
-// files is the files changed
-// site is the global site object
-// compile the compile function
-
 var _ = require("underscore"),
     fs = require("fs");
 
-var compileChangedFiles = function(changedFiles, site, compile) {
+module.exports = function (changedFiles, files, handler, callback) {
+
     var tags = changedFiles.map(function(file) {
         return file.tags;
     });
     tags = _.uniq(_.flatten(tags));
 
+    var targets = [];
+
     // tags/tagName.html
     tags.forEach(function(tag) {
-        compile({
+        targets.push({
             globals: {
                 // title: tag,
                 // pages: site.pages.filter(function(page) {
@@ -27,7 +26,7 @@ var compileChangedFiles = function(changedFiles, site, compile) {
 
     // files in content/
     changedFiles.forEach(function(file) {
-        compile({
+        targets.push({
             globals: file,
             template: "page.jade",
             target: file.dir + file.name + ".html"
@@ -35,23 +34,21 @@ var compileChangedFiles = function(changedFiles, site, compile) {
     });
 
     // index.html
-    compile({
+    targets.push({
         globals: {
-            pages: site.pages
+            files: files
         },
         template: "archives.jade",
         target: "index.html"
     });
 
     // static files
-    site.files.forEach(function(file) {
+    files.forEach(function(file) {
         if(file.type == "binary") {
-            compile({
+            targets.push({
                 file: file,
                 target: file.path
             });
         }
     });
-}
-
-module.exports = compileChangedFiles;
+};

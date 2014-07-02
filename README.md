@@ -15,7 +15,7 @@ Still coding. The alpha version may come in this summer.
 - Everything is a NPM package
 
     The plugins and the config/ are all npm packages.
-    And thus you can use your favorite packages via npm.
+    And thus you can use your favorite nodejs packages via npm.
     Simply create package.json and kizz will automatcally install it.
 
 - Builtin Pandoc / MultiMarkdown Support
@@ -49,6 +49,28 @@ Still coding. The alpha version may come in this summer.
 - Feed: Atom
 
 - Jade Templating
+
+## Events
+
+- sourceFilesChanged
+
+    Files in content/ changed.
+
+- sourceFilesRemoved
+
+    Files in content/ removed.
+
+- sourceFilesParsed
+
+    Files in content/ parsed.
+    This event will be fired when all hooks in sourceFilesChanged will execed.
+
+- filesChanged
+
+    After source files parsed,
+    the kizz.files object will merge the change and fire filesChanged.
+
+- filesRemoved
 
 ## Doc
 

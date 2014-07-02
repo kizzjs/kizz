@@ -10,7 +10,6 @@ tags:
   - jade
 comments: null
 tracker: null
-
 plugins:
   - compiler-cache
   - markdown

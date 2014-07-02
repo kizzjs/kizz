@@ -2,7 +2,8 @@
 // site is the global site object
 // compile the compile function
 
-var _ = require("underscore");
+var _ = require("underscore"),
+    fs = require("fs");
 
 var compileChangedFiles = function(changedFiles, site, compile) {
     var tags = changedFiles.map(function(file) {

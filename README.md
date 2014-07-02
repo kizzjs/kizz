@@ -12,6 +12,12 @@ Still coding. The alpha version may come in this summer.
 
 - Static
 
+- Everything is a NPM package
+
+    The plugins and the config/ are all npm packages.
+    And thus you can use your favorite packages via npm.
+    Simply create package.json and kizz will automatcally install it.
+
 - Builtin Markdown Support
 
 - FileSystem Based Generator

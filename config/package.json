@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "underscore": "latest",
+        "js-yaml": "latest"
+    }
+}

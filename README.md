@@ -18,7 +18,13 @@ Still coding. The alpha version may come in this summer.
     And thus you can use your favorite packages via npm.
     Simply create package.json and kizz will automatcally install it.
 
-- Builtin Markdown Support
+- Builtin Pandoc / MultiMarkdown Support
+
+    Will use pandoc if avaliable, otherwise Marked will be the Markdown Engine.
+
+- Compiler Cache
+    
+    Only the changed files will be compiled. 
 
 - FileSystem Based Generator
 
@@ -30,10 +36,11 @@ Still coding. The alpha version may come in this summer.
     simply define global tags,
     and kizz will automatically figure out tags for each file.
     This is based on the content and path of each file.
+    And great thanks to NaturalNode's general natural language facilities.
 
 - Flexible and Programmable Routing System
 
-    See config/routes.js
+    See config/compile.js
     
 - Search Support
 

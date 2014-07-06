@@ -102,6 +102,12 @@ TODO: 标准化
 
 ### Linux / Mac
 
+#### Via npm
+
+Install NodeJS 0.11+ and `sudo npm install -g kizz`
+
+#### Fancy Install
+
 ./script/install.sh
 
 ### Windows

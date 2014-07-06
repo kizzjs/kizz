@@ -19,9 +19,9 @@ function pkg {
     tar -zcf "dist/kizz-$build".tar.gz --directory=/tmp/ "kizz-$build"
 }
 
+mkdir -p ./dist
 pkg "linux-x64"
 pkg "linux-x86"
 pkg "darwin-x64"
 pkg "darwin-x86"
 pkg "windows"
-

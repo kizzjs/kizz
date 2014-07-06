@@ -14,7 +14,7 @@ Still coding. The alpha version may come in this summer.
 
 - Everything is a NPM package
 
-    The plugins and the config/ are all npm packages.
+    The plugins, theme, and the config/ are all npm packages.
     And thus you can use your favorite nodejs packages via npm.
     Simply create package.json and kizz will automatcally install it.
 
@@ -50,6 +50,10 @@ Still coding. The alpha version may come in this summer.
 
 - Jade Templating
 
+- ES6 Support
+
+    kizz included node-v0.11.13.
+
 ## Events
 
 - sourceFilesChanged
@@ -74,7 +78,7 @@ Still coding. The alpha version may come in this summer.
 - filesRemoved
 
     This event will be fired when all hooks in sourceFilesRemoved will execed.
-
+    
 ## Doc
 
 Every file in content/ is called page.

@@ -68,9 +68,12 @@ Still coding. The alpha version may come in this summer.
 - filesChanged
 
     After source files parsed,
+    This event will be fired when all hooks in sourceFilesChanged, sourceFilesParsed will execed.
     the kizz.files object will merge the change and fire filesChanged.
 
 - filesRemoved
+
+    This event will be fired when all hooks in sourceFilesRemoved will execed.
 
 ## Doc
 
@@ -89,4 +92,41 @@ TODO: 标准化
     name: name
     type: type
     tags: guessTags(content, path, globals.config.tags)
+```
+
+## Install
+
+### Nodejs 0.11
+
+#### Windows
+
+http://nodejs.org/dist/v0.11.13/node-v0.11.13-x86.msi
+
+#### Mac
+
+#### Linux
+
+##### Ubuntu
+
+Use this ppa: 
+https://launchpad.net/~chris-lea/+archive/node.js-devel/+packages
+
+##### Debian
+
+Download deb here:
+https://launchpad.net/~chris-lea/+archive/node.js-devel/+sourcepub/4150429/+listing-archive-extra
+
+Or, build from source:
+http://nodejs.org/dist/v0.11.13/
+
+
+## Dev Install
+
+### Install batsh
+
+```
+sudo apt-get install opam m4
+opam init
+opam install ocp-build core ounit dlist cmdliner
+opam install batsh
 ```

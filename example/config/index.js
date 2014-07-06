@@ -5,6 +5,19 @@ var yaml = require("js-yaml"),
 
 module.exports = function(kizz) {
 
+    kizz.use(function(kizz) {
+        return true;
+    }, function(kizz, next) {
+        kizz.config = yaml.safeLoad(fs.readFileSync("config.yml", "utf-8"));
+        next(kizz);
+    });
+
+    kizz.use(function(kizz) {
+        return kizz.files && kizz.files[0].content;
+    }, function(kizz, next) {
+        // update kizz.routes
+    });
+
     kizz.on("filesChanged", function(event, next) {
         var handler = function(obj, callback) {
             kizz.compile(obj);
@@ -24,5 +37,5 @@ module.exports = function(kizz) {
         });
     });
 
-    kizz.config = yaml.safeLoad(fs.readFileSync("config.yml", "utf-8"));
+
 };

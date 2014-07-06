@@ -12,3 +12,7 @@ guessTags = (content, path, globalTags) ->
       englishWords.indexOf(tagStem) > -1
     else
       (content+path).indexOf(tag) > -1
+
+module.exports = (kizz) ->
+  kizz.on "sourceFilesParsed", (event, next) ->
+    parsedSourceFiles = event.parsedSourceFiles

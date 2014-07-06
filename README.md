@@ -100,37 +100,15 @@ TODO: 标准化
 
 ## Install
 
-### Nodejs 0.11
+### Linux / Mac
 
-#### Windows
+./script/install.sh
 
-http://nodejs.org/dist/v0.11.13/node-v0.11.13-x86.msi
+### Windows
 
-#### Mac
-
-#### Linux
-
-##### Ubuntu
-
-Use this ppa: 
-https://launchpad.net/~chris-lea/+archive/node.js-devel/+packages
-
-##### Debian
-
-Download deb here:
-https://launchpad.net/~chris-lea/+archive/node.js-devel/+sourcepub/4150429/+listing-archive-extra
-
-Or, build from source:
-http://nodejs.org/dist/v0.11.13/
-
+./script/install.bat
 
 ## Dev Install
 
-### Install batsh
-
-```
-sudo apt-get install opam m4
-opam init
-opam install ocp-build core ounit dlist cmdliner
-opam install batsh
-```
+./devDep.sh
+./build.sh

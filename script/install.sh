@@ -1,4 +1,4 @@
 #!/bin/bash
-mkdir -p /usr/local/lib/kizz/bin
-cp -r bin/node lib/ /usr/local/lib/kizz/node
-cp -f kizz.sh /usr/local/bin/kizz
+mkdir -p /usr/local/lib/kizz
+cp -r lib bin example /usr/local/lib/kizz
+cp -f script/kizz.sh /usr/local/bin/kizz

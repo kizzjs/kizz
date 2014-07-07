@@ -8,6 +8,16 @@ If there’s one word to describe kizz, it is relax.
 
 Still coding. The alpha version may come in this summer.
 
+## Plugins
+
+- helloworld (will fetch from npm)
+
+- ./plugins/helloworld (will install from local)
+
+- helloworld@0.0.1 (will install version 0.0.1)
+
+- <git remote url> (will install from git)
+
 ## Features
 
 - Static

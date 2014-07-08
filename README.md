@@ -60,35 +60,6 @@ Still coding. The alpha version may come in this summer.
 
 - Jade Templating
 
-- ES6 Support
-
-    kizz included node-v0.11.13.
-
-## Events
-
-- sourceFilesChanged
-
-    Files in content/ changed.
-
-- sourceFilesRemoved
-
-    Files in content/ removed.
-
-- sourceFilesParsed
-
-    Files in content/ parsed.
-    This event will be fired when all hooks in sourceFilesChanged will execed.
-
-- filesChanged
-
-    After source files parsed,
-    This event will be fired when all hooks in sourceFilesChanged, sourceFilesParsed will execed.
-    the kizz.files object will merge the change and fire filesChanged.
-
-- filesRemoved
-
-    This event will be fired when all hooks in sourceFilesRemoved will execed.
-    
 ## Doc
 
 Every file in content/ is called page.
@@ -128,3 +99,20 @@ Install NodeJS 0.11+ and `sudo npm install -g kizz`
 
 ./devDep.sh
 ./build.sh
+
+## FAQ
+
+### Why not use Generator Functions for middlewares (like koa)?
+
+Kizz is different from koa. 
+Kizz's plugins' order are not defined by hardcoding.
+Kizz will try to figure out the right order of them.
+Using generator functions won't help with this and what's worse, it reuqires nodejs v0.11+, 
+which is not that easy to install for some distros.
+And if a plugin wants to use `co` or `Generator Functions`, 
+then he can use that in his plugin. 
+
+Koa:
+With generators we can achieve “true” middleware.
+Contrasting Connect’s implementation which simply passes control through series of functions until one returns,
+Koa yields “downstream”, then control flows back “upstream”.

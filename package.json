@@ -18,11 +18,8 @@
         "kizz": "lib/cli.js"
     },
     "dependencies": {
+        "beads": "latest",
         "underscore": "latest",
-        "jade": "latest",
-        "js-yaml": "latest",
-        "glob": "latest",
-        "coffee-script": "latest",
-        "natural": "latest"
+        "glob": "latest"
     }
 }

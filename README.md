@@ -12,11 +12,7 @@ Still coding. The alpha version may come in this summer.
 
 - helloworld (will fetch from npm)
 
-- ./plugins/helloworld (will install from local)
-
-- helloworld@0.0.1 (will install version 0.0.1)
-
-- <git remote url> (will install from git)
+- plugins/helloworld (will install from local)
 
 ## Features
 

@@ -3,7 +3,7 @@ name: Site Name Here
 url: http://example.com
 author:
   name: Author Name here
-  email: youname@exmaple.com
+  email: yourname@exmaple.com
 tags:
   - kizz
   - github
@@ -11,11 +11,6 @@ tags:
 comments: null
 tracker: null
 plugins:
-  - compiler-cache
-  - markdown
-  - guess-tags-en
-  # get file diff, calc targets via routes and delete files removed
-  # diff between last compile.
-  # note the routes must be sure, so this plugin should be put at last
-  # if any plugins change the routes, that plugin should be put before it
-npmRegistry: https://registry.npm.taobao.org
+  - plugins/markdown
+  # - plugins/guess-tags-en
+registry: https://registry.npm.taobao.org

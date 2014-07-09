@@ -1,0 +1,7 @@
+{
+    "name": "kizz-guess-tags-en",
+    "version": "0.0.1",
+    "dependencies": {
+        "natural": "0.1.16"
+    }
+}

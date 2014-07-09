@@ -1,25 +1,30 @@
 {
-    "name": "kizz",
-    "version": "0.0.3",
-    "keywords": ["kizz"],
-    "description": "kizz",
-    "homepage" : "https://github.com/zenozeng/kizz",
-    "bugs": {
-        "url": "https://github.com/zenozeng/kizz/issues",
-        "email": "zenoofzeng@gmail.com"
-    },
-    "license": "GPLv2",
-    "author": {
-        "name": "Zeno Zeng",
-        "email": "zenoofzeng@gmail.com",
-        "url": "https://zenozeng.com"
-    },
-    "bin": {
-        "kizz": "lib/cli.js"
-    },
-    "dependencies": {
-        "beads": "latest",
-        "underscore": "latest",
-        "glob": "latest"
-    }
+  "name": "kizz",
+  "version": "0.0.3",
+  "keywords": [
+    "kizz"
+  ],
+  "description": "kizz",
+  "homepage": "https://github.com/zenozeng/kizz",
+  "bugs": {
+    "url": "https://github.com/zenozeng/kizz/issues",
+    "email": "zenoofzeng@gmail.com"
+  },
+  "license": "GPLv2",
+  "author": {
+    "name": "Zeno Zeng",
+    "email": "zenoofzeng@gmail.com",
+    "url": "https://zenozeng.com"
+  },
+  "bin": {
+    "kizz": "lib/cli.js"
+  },
+  "dependencies": {
+    "beads": "latest",
+    "underscore": "latest",
+    "co": "~3.0.6",
+    "co-fs": "latest",
+    "glob": "latest",
+    "request": "^2.37.0"
+  }
 }

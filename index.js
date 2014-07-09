@@ -1,7 +1,9 @@
 var co = require("co"),
     fs = require("co-fs"),
     yaml = require("js-yaml"),
-    mkdirp = require("mkdirp");
+    mkdirp = require("mkdirp"),
+    walk = require("walk"),
+    path = require("path");
 
 var context = {},
     app = new (require("beads"))(context),
@@ -45,4 +47,37 @@ co(function* () {
             pluginManager.activate(plugin, app, cb);
         };
     });
+
+    ////////////////////////////
+    //
+    // Check files in content/
+    //
+    ////////////////////////////
+
+    var walkContent = function(cb) {
+        var files = [],
+            walker = walk.walk("content", {followLinks: false});
+        walker.on("file", function(root, stats, next) {
+            files.push({
+                path: root + "/" + stats.name,
+                mtime: stats.mtime,
+                extname: path.extname(stats.name),
+                dirname: root,
+                basename: path.basename(stats.name)
+            });
+            next();
+        });
+        walker.on("end", function() {
+            cb(null, files);
+        });
+    }
+
+    ////////////////////////////
+    //
+    // Init context
+    //
+    ////////////////////////////
+
+    context.sourceFiles = yield walkContent;
+
 })();

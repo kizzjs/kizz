@@ -56,23 +56,33 @@ Still coding. The alpha version may come in this summer.
 
 - Jade Templating
 
-## Doc
+## Standerd object
 
-Every file in content/ is called page.
-Page is an object,
+### sourceFile
 
-TODO: 标准化
+```json
+{
+    "path": "filepath",
+    "mtime": "modified timestamp (microtime)",
+    "extname": "extname",
+    "dirname": "dirname",
+    "basename": "basename"
+}
+```
+
+### file
 
 ```
-  page =
-    path: path
-    content: content
-    mtime: info.mtime
-    html: marked(content)
-    title: h1 or name
-    name: name
-    type: type
-    tags: guessTags(content, path, globals.config.tags)
+{
+    "path": "filepath",
+    "mtime": "modified time (Date Object)",
+    "extname": "extname",
+    "dirname": "dirname",
+    "basename": "basename"
+    "content": "html", // after kizz-markdown
+    "title": "title", // after kizz-markdown
+    "tags": ["tag1", "tag2"] // after kizz-markdown
+}
 ```
 
 ## Install

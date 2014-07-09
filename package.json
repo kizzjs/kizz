@@ -20,11 +20,12 @@
     "kizz": "lib/cli.js"
   },
   "dependencies": {
-    "beads": "latest",
-    "underscore": "latest",
+    "beads": "^0.1.0",
     "co": "~3.0.6",
-    "co-fs": "latest",
-    "glob": "latest",
-    "request": "^2.37.0"
+    "co-fs": "^1.2.0",
+    "glob": "^4.0.3",
+    "js-yaml": "^3.1.0",
+    "request": "^2.37.0",
+    "underscore": "^1.6.0"
   }
 }

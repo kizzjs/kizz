@@ -1,5 +1,4 @@
 ---
-npmRegistry: https://registry.npm.taobao.org
 name: Site Name Here
 url: http://example.com
 author:
@@ -15,8 +14,8 @@ plugins:
   - compiler-cache
   - markdown
   - guess-tags-en
-  - file-diff
   # get file diff, calc targets via routes and delete files removed
   # diff between last compile.
   # note the routes must be sure, so this plugin should be put at last
   # if any plugins change the routes, that plugin should be put before it
+npmRegistry: https://registry.npm.taobao.org

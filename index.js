@@ -94,22 +94,29 @@ co(function* () {
 
     var cachedContext = objCache.get("context");
 
-    context.sourceFiles = yield walkContent;
+    var changedFiles = [];
+    var removedFiles = [];
+    var unchangedFiles = [];
 
-    if(!cachedContext) cachedContext = {};
-    if(!cachedContext.cacheTime) cachedContext.cacheTime = 0;
+    var file = {};
+    file.status = "changed" || "removed" || "unchanged";
 
-    context.changedSourceFiles = context.sourceFiles.filter(function(file) {
-        return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
-    });
-    // load unchanged files object from cachedContext
-    var changedFiles = context.changedSourceFiles.map(function(file) {
-        return file.path;
-    });
-    context.files = cachedContext.files.filter(function(file) {
-        return changedFiles.indexOf(file.path) > -1;
-    });
+    // context.sourceFiles = yield walkContent;
 
-    context.changedFiles = [];
-    context.removedFiles = context.removedSourceFiles.concat();
+    // if(!cachedContext) cachedContext = {};
+    // if(!cachedContext.cacheTime) cachedContext.cacheTime = 0;
+
+    // context.changedSourceFiles = context.sourceFiles.filter(function(file) {
+    //     return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
+    // });
+    // // load unchanged files object from cachedContext
+    // var changedFiles = context.changedSourceFiles.map(function(file) {
+    //     return file.path;
+    // });
+    // context.files = cachedContext.files.filter(function(file) {
+    //     return changedFiles.indexOf(file.path) > -1;
+    // });
+
+    // context.changedFiles = [];
+    // context.removedFiles = context.removedSourceFiles.concat();
 })();

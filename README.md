@@ -58,7 +58,7 @@ Still coding. The alpha version may come in this summer.
 
 ## Standerd object
 
-### sourceFile
+### Sourcefile Object
 
 ```json
 {
@@ -70,7 +70,7 @@ Still coding. The alpha version may come in this summer.
 }
 ```
 
-### file
+### File Object
 
 ```
 {

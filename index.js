@@ -118,27 +118,14 @@ co(function* () {
     // and get their file object from cache
 
 
+    ////////////////////////////
+    //
+    // Run Middlewares
+    //
+    ////////////////////////////
 
-    // var cachedSourceFiles = cachedContext.unchangedSourceFiles.concat(cachedContext.changedSourceFiles);
-    // var pathArr = sourceFiles.map(function(file) {
-    //     return file.path;
-    // });
-    // context.removedSourceFiles = cachedSourceFiles.filter(function(file) {
-    //     return pathArr.indexOf(file.path) === -1;
-    // });
+    app.run(function(err) {
+        if(err) throw(err);
+    });
 
-
-    // context.changedSourceFiles = context.sourceFiles.filter(function(file) {
-    //     return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
-    // });
-    // // load unchanged files object from cachedContext
-    // var changedFiles = context.changedSourceFiles.map(function(file) {
-    //     return file.path;
-    // });
-    // context.files = cachedContext.files.filter(function(file) {
-    //     return changedFiles.indexOf(file.path) > -1;
-    // });
-
-    // context.changedFiles = [];
-    // context.removedFiles = context.removedSourceFiles.concat();
 })();

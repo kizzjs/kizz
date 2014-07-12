@@ -14,6 +14,7 @@ var compile = function(options) {
 
 module.exports = function *(app) {
     app.use(function *(next) {
+        // run plugins first, theme should be called at last
         yield next;
 
         var themeDir = "";

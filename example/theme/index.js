@@ -1,4 +1,16 @@
-var jade = require("jade")
+var jade = require("jade"),
+    fs = require("fs");
+
+var compile = function(options) {
+    jade.renderFile(
+      "theme/templates/" + options.template,
+      {globals: options.globals},
+      function(err, html) {
+          if (err) throw err;
+          fs.writeFile(options.target, html);
+      }
+    );
+}
 
 module.exports = function *(app) {
     app.use(function *(next) {

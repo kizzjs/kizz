@@ -119,7 +119,6 @@ co(function* () {
 
 
 
-
     // var cachedSourceFiles = cachedContext.unchangedSourceFiles.concat(cachedContext.changedSourceFiles);
     // var pathArr = sourceFiles.map(function(file) {
     //     return file.path;

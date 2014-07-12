@@ -44,6 +44,7 @@ co(function* () {
     app.use(function *(next) {
         yield next;
         this.cacheTime = (new Date()).getTime();
+        this.cachedConfig = JSON.stringify(config);
         objCache.set("context", this);
     });
 
@@ -72,13 +73,13 @@ co(function* () {
             walker = walk.walk("content", {followLinks: false});
         walker.on("file", function(root, stats, next) {
             var file = {
+                path: root + "/" + stats.name,
                 mtime: stats.mtime,
                 extname: path.extname(stats.name),
                 dirname: root,
                 basename: path.basename(stats.name)
             }
-            var path = root + "/" + stats.name;
-            files.push(new File(path, file));
+            files.push(path);
             next();
         });
         walker.on("end", function() {
@@ -94,17 +95,39 @@ co(function* () {
 
     var cachedContext = objCache.get("context");
 
-    var changedFiles = [];
-    var removedFiles = [];
-    var unchangedFiles = [];
+    var sourceFiles = yield walkContent;
 
-    var file = {};
-    file.status = "changed" || "removed" || "unchanged";
+    context.changedFiles = [];
+    context.removedFiles = [];
+    context.unchangedFiles = [];
 
-    // context.sourceFiles = yield walkContent;
+    if(!cachedContext) cachedContext = {};
+    if(!cachedContext.cacheTime || (cachedContext.cachedConfig != JSON.stringify(config)))
+      cachedContext.cacheTime = 0;
 
-    // if(!cachedContext) cachedContext = {};
-    // if(!cachedContext.cacheTime) cachedContext.cacheTime = 0;
+    context.changedFiles = sourceFiles.filter(function(file) {
+        return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
+    });
+
+    // todo
+    // context.unchangedFiles
+    // load from cache
+
+    // todo
+    // context.removedFiles
+    // and get their file object from cache
+
+
+
+
+    // var cachedSourceFiles = cachedContext.unchangedSourceFiles.concat(cachedContext.changedSourceFiles);
+    // var pathArr = sourceFiles.map(function(file) {
+    //     return file.path;
+    // });
+    // context.removedSourceFiles = cachedSourceFiles.filter(function(file) {
+    //     return pathArr.indexOf(file.path) === -1;
+    // });
+
 
     // context.changedSourceFiles = context.sourceFiles.filter(function(file) {
     //     return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();

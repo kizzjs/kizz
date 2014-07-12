@@ -44,17 +44,19 @@ Still coding. The alpha version may come in this summer.
     This is based on the content and path of each file.
     And great thanks to NaturalNode's general natural language facilities.
 
-- Flexible and Programmable Routing System
+- Powerful Theme System
 
-    See config/compile.js
+    A theme is also a middleware (like plugins).
+    You can use your favorite templating engine (Jade, Swig, HAML and etc.)
+    Simply define it in package.json's dependency and require it in your theme/index.js.
     
+    Example: https://github.com/zenozeng/kizz-theme-paper
+
 - Search Support
 
     Frontend powered search support
 
 - Feed: Atom
-
-- Jade Templating
 
 ## Standerd object
 

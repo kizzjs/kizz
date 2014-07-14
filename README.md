@@ -18,6 +18,8 @@ Still coding. The alpha version may come in this summer.
 
 - Static
 
+    纯静态的博客系统。
+
 - Everything is a NPM package
 
     The plugins, theme, and the config/ are all npm packages.
@@ -35,6 +37,8 @@ Still coding. The alpha version may come in this summer.
 - FileSystem Based Generator
 
     Use file's modified timestamp and filename for date and title
+    目录结构会被保留。
+    用你最喜欢的方式组织你的文件吧，那同时也是你的URL构成方式。
 
 - Global Tags
 
@@ -52,38 +56,28 @@ Still coding. The alpha version may come in this summer.
     
     Example: https://github.com/zenozeng/kizz-theme-paper
 
+- Feed: Atom
+
+## Features of default theme
+
 - Search Support
 
     Frontend powered search support
 
-- Feed: Atom
-
 ## Standerd object
 
-### Sourcefile Object
+### File Object
 
 ```json
 {
     "path": "filepath",
-    "mtime": "modified timestamp (microtime)",
-    "extname": "extname",
-    "dirname": "dirname",
-    "basename": "basename"
-}
-```
-
-### File Object
-
-```
-{
-    "path": "filepath",
     "mtime": "modified time (Date Object)",
-    "extname": "extname",
+    "extname": "extname", // ".md"
     "dirname": "dirname",
     "basename": "basename"
     "content": "html", // after kizz-markdown
-    "title": "title", // after kizz-markdown
-    "tags": ["tag1", "tag2"] // after kizz-markdown
+    "title": "title", // after kizz-guess-title
+    "tags": ["tag1", "tag2"] // after kizz-guess-tags-en
 }
 ```
 
@@ -110,15 +104,9 @@ Install NodeJS 0.11+ and `sudo npm install -g kizz`
 
 ## FAQ
 
-### Why not use Generator Functions for middlewares (like koa)?
+### Why not Generator Functions?
 
-Kizz is different from koa. 
-Kizz's plugins' order are not defined by hardcoding.
-Kizz will try to figure out the right order of them.
-Using generator functions won't help with this and what's worse, it reuqires nodejs v0.11+, 
-which is not that easy to install for some distros.
-And if a plugin wants to use `co` or `Generator Functions`, 
-then he can use that in his plugin. 
+和 Koa 一样。
 
 Koa:
 With generators we can achieve “true” middleware.

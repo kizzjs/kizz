@@ -34,5 +34,5 @@ module.exports = function *(app) {
         // handle removed files
         //
         ////////////////////////////
-    }
+    });
 }

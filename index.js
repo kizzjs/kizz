@@ -97,17 +97,26 @@ co(function* () {
 
     var sourceFiles = yield walkContent;
 
+    console.log(sourceFiles);
+
     context.changedFiles = [];
     context.removedFiles = [];
     context.unchangedFiles = [];
 
     if(!cachedContext) cachedContext = {};
-    if(!cachedContext.cacheTime || (cachedContext.cachedConfig != JSON.stringify(config)))
-      cachedContext.cacheTime = 0;
+    if(!cachedContext.cacheTime || (cachedContext.cachedConfig != JSON.stringify(config))) {
+        cachedContext.cacheTime = 0;
+    }
+
+    context.debug(">> CONTEXT (Cached)");
+    context.debug(cachedContext);
 
     context.changedFiles = sourceFiles.filter(function(file) {
         return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
     });
+
+    context.debug(">> CONTEXT");
+    context.debug(context);
 
     // todo
     // context.unchangedFiles

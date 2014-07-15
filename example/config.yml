@@ -14,3 +14,8 @@ plugins:
   - plugins/markdown
   # - plugins/guess-tags-en
 registry: https://registry.npm.taobao.org
+theme: theme/
+log:
+  - log
+  - debug
+  - error

@@ -68,7 +68,7 @@ Still coding. The alpha version may come in this summer.
 
 ### File Object
 
-```json
+```javascript
 {
     "path": "filepath",
     "mtime": "modified time (Date Object)",
@@ -81,30 +81,9 @@ Still coding. The alpha version may come in this summer.
 }
 ```
 
-## Install
-
-### Linux / Mac
-
-#### Via npm
-
-Install NodeJS 0.11+ and `sudo npm install -g kizz`
-
-#### Fancy Install
-
-./script/install.sh
-
-### Windows
-
-./script/install.bat
-
-## Dev Install
-
-./devDep.sh
-./build.sh
-
 ## FAQ
 
-### Why not Generator Functions?
+### Why Generator Functions?
 
 和 Koa 一样。
 

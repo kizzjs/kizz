@@ -32,6 +32,7 @@ co(function* () {
         console.error("Fail to parse config.yml");
         throw e;
     }
+    context.config = config;
 
     ////////////////////////////
     //
@@ -43,9 +44,11 @@ co(function* () {
     mkdirp.sync(".cache/node_modules");
     app.use(function *(next) {
         yield next;
-        this.cacheTime = (new Date()).getTime();
-        this.cachedConfig = JSON.stringify(config);
-        objCache.set("context", this);
+        objCache.set({
+            config: context.config,
+            files: context.changedFiles.concat(context.unchangedFiles),
+            time: (new Date()).getTime()
+        });
     });
 
     // init plugin manager
@@ -79,7 +82,7 @@ co(function* () {
                 dirname: root,
                 basename: path.basename(stats.name)
             }
-            files.push(path);
+            files.push(file);
             next();
         });
         walker.on("end", function() {
@@ -93,7 +96,7 @@ co(function* () {
     //
     ////////////////////////////
 
-    var cachedContext = objCache.get("context");
+    var cache = objCache.get();
 
     var sourceFiles = yield walkContent;
 
@@ -103,16 +106,19 @@ co(function* () {
     context.removedFiles = [];
     context.unchangedFiles = [];
 
-    if(!cachedContext) cachedContext = {};
-    if(!cachedContext.cacheTime || (cachedContext.cachedConfig != JSON.stringify(config))) {
-        cachedContext.cacheTime = 0;
+    if(!cache) cache = {};
+    if(!cache.time || (cache.cachedConfig != JSON.stringify(config))) {
+        cache.time = 0;
     }
 
+    // for debug
+    // cache.time = 0;
+
     context.debug(">> CONTEXT (Cached)");
-    context.debug(cachedContext);
+    context.debug(cache);
 
     context.changedFiles = sourceFiles.filter(function(file) {
-        return (new Date(file.mtime)).getTime() > (new Date(cachedContext.cacheTime)).getTime();
+        return (new Date(file.mtime)).getTime() > (new Date(cache.time)).getTime();
     });
 
     context.debug(">> CONTEXT");

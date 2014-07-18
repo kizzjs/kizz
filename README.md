@@ -64,6 +64,22 @@ Still coding. The alpha version may come in this summer.
 
     Frontend powered search support
 
+## Usage
+
+### Update
+
+#### Update Plugins & Theme
+
+```
+kizz update
+```
+
+#### Update Kizz
+
+```
+sudo npm update -g kizz
+```
+
 ## Standerd object
 
 ### File Object

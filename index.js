@@ -1,5 +1,6 @@
 var co = require("co"),
     fs = require("co-fs"),
+    fsExtra = require("fs.extra"),
     yaml = require("js-yaml"),
     mkdirp = require("mkdirp"),
     walk = require("walk"),
@@ -27,7 +28,6 @@ co(function* () {
     try {
         config = yield fs.readFile('config.yml', 'utf-8');
         config = yaml.safeLoad(config);
-        context.debug(config);
     } catch(e) {
         console.error("Fail to parse config.yml");
         throw e;
@@ -44,6 +44,7 @@ co(function* () {
     mkdirp.sync(".cache/node_modules");
     app.use(function *(next) {
         yield next;
+        context.debug(this);
         objCache.set({
             config: context.config,
             files: context.changedFiles.concat(context.unchangedFiles),
@@ -106,6 +107,13 @@ co(function* () {
         cache.time = 0;
     }
 
+    var pluginsChanged = JSON.stringify(cache.config.plugins) != JSON.stringify(config.plugins);
+    if(pluginsChanged) {
+        yield function(callback) {
+            fsExtra.rmrf('.cache/node_modules', callback);
+        }
+    }
+
     context.changedFiles = sourceFiles.filter(function(file) {
         return (new Date(file.mtime)).getTime() > (new Date(cache.time)).getTime();
     });
@@ -135,8 +143,6 @@ co(function* () {
             context.removedFiles.push(file);
         }
     });
-
-    context.debug(context);
 
     ////////////////////////////
     //

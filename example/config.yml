@@ -11,8 +11,8 @@ tags:
 comments: null
 tracker: null
 plugins:
-  - plugins/markdown
-  # - plugins/guess-tags-en
+  - /home/zenozeng/code/kizz-markdown
+  - /home/zenozeng/code/kizz-guess-tags-en
 registry: https://registry.npm.taobao.org
 theme: theme/
 log:

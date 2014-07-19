@@ -100,38 +100,43 @@ co(function* () {
 
     var sourceFiles = yield walkContent;
 
-    console.log(sourceFiles);
-
-    context.changedFiles = [];
-    context.removedFiles = [];
-    context.unchangedFiles = [];
-
     if(!cache) cache = {};
-    if(!cache.time || (cache.cachedConfig != JSON.stringify(config))) {
+    var configChanged = (JSON.stringify(cache.config) != JSON.stringify(config));
+    if(!cache.time || configChanged) {
         cache.time = 0;
     }
-
-    // for debug
-    // cache.time = 0;
-
-    context.debug(">> CONTEXT (Cached)");
-    context.debug(cache);
 
     context.changedFiles = sourceFiles.filter(function(file) {
         return (new Date(file.mtime)).getTime() > (new Date(cache.time)).getTime();
     });
 
-    context.debug(">> CONTEXT");
+    context.removedFiles = [];
+    context.unchangedFiles = [];
+
+    var inArr = function(file, arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i].path === file.path) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    if(!cache.files) {
+        cache.files = [];
+    }
+
+    cache.files.forEach(function(file) {
+        if(inArr(file, sourceFiles)) {
+            if(!inArr(file, context.unchangedFiles)) {
+                context.unchangedFiles.push(file);
+            }
+        } else {
+            context.removedFiles.push(file);
+        }
+    });
+
     context.debug(context);
-
-    // todo
-    // context.unchangedFiles
-    // load from cache
-
-    // todo
-    // context.removedFiles
-    // and get their file object from cache
-
 
     ////////////////////////////
     //

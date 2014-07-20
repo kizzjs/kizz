@@ -66,12 +66,25 @@ Still coding. The alpha version may come in this summer.
 
 ## Usage
 
+### Build
+
+```
+kizz build
+```
+
+### Preview
+
+```
+sudo npm install http-server -g
+http-server ./public -p 8080
+```
+
 ### Update
 
 #### Update Plugins & Theme
 
 ```
-kizz update
+npm update
 ```
 
 #### Update Kizz

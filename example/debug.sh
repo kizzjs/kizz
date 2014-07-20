@@ -1,3 +1,3 @@
 #!/bin/zsh
-rm .cache/context.json
+rm .cache/cache.json
 gnode ../index.js

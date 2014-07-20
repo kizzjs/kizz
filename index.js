@@ -81,7 +81,7 @@ co(function* () {
                 mtime: stats.mtime,
                 extname: path.extname(stats.name),
                 dirname: root,
-                basename: path.basename(stats.name)
+                basename: path.basename(stats.name, path.extname(stats.name))
             }
             files.push(file);
             next();

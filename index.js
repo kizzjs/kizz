@@ -101,7 +101,7 @@ co(function* () {
 
     var sourceFiles = yield walkContent;
 
-    if(!cache) cache = {};
+    if(!cache) cache = {config: {plugins: []}};
     var configChanged = (JSON.stringify(cache.config) != JSON.stringify(config));
     if(!cache.time || configChanged) {
         cache.time = 0;

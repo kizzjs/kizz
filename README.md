@@ -6,13 +6,7 @@ If there’s one word to describe kizz, it is relax.
 
 ## Status
 
-Still coding. The alpha version may come in this summer.
-
-## Plugins
-
-- helloworld (will fetch from npm)
-
-- plugins/helloworld (will install from local)
+Still coding. The alpha version may come out this summer.
 
 ## Features
 
@@ -22,13 +16,18 @@ Still coding. The alpha version may come in this summer.
 
 - Everything is a NPM package
 
-    The plugins, theme, and the config/ are all npm packages.
-    And thus you can use your favorite nodejs packages via npm.
-    Simply create package.json and kizz will automatcally install it.
+    The plugins, theme are all npm packages.
+    And thus you can simply npm update to update theme,
+    and you can use your favorite nodejs packages via npm.
 
-- Builtin Pandoc / MultiMarkdown Support
+- Pandoc / MultiMarkdown Support
 
     Will use pandoc if avaliable, otherwise Marked will be the Markdown Engine.
+    
+- Emacs Org Support
+
+    Emacs Org to HTML via Eamcs Lisp.
+    See https://github.com/zenozeng/kizz-org
 
 - Compiler Cache
     
@@ -56,13 +55,15 @@ Still coding. The alpha version may come in this summer.
     
     Example: https://github.com/zenozeng/kizz-theme-paper
 
-- Feed: Atom
-
 ## Features of default theme
 
 - Search Support
 
     Frontend powered search support
+
+- Atom Feed
+
+- Syntax Highlight
 
 ## Usage
 
@@ -105,7 +106,8 @@ sudo npm update -g kizz
     "dirname": "dirname",
     "basename": "basename"
     "content": "html", // after kizz-markdown
-    "title": "title", // after kizz-guess-title
+    "title": "title", // after kizz-markdown
+    "link": "link for the post (optional)",
     "tags": ["tag1", "tag2"] // after kizz-guess-tags-en
 }
 ```
@@ -114,9 +116,29 @@ sudo npm update -g kizz
 
 ### Why Generator Functions?
 
-和 Koa 一样。
+TODO
 
-Koa:
-With generators we can achieve “true” middleware.
-Contrasting Connect’s implementation which simply passes control through series of functions until one returns,
-Koa yields “downstream”, then control flows back “upstream”.
+### 为什么文章顶部没有类似 Jekyll 的配置 yaml？
+
+个人认为这样打乱写作的纯粹性。
+这些繁琐的东西应该交给程序自己去管理。
+
+### 与 Farbox 的不同？
+
+- Kizz 任然定位成一个静态站点生成器，而非托管平台。
+
+    本地编译意味着可以更加方便地调用本地命令
+
+- Kizz 重度耦合 npm、co
+
+    一切皆为 NPM 包，重度使用 generators。
+    
+- Kizz 以我自己为目标用户
+
+    我是个懒惰的程序员，却又想要有一些灵活可定制的个人 blog 与 wiki 之类的。
+
+- 开放的插件系统
+
+    Kizz 的核心只是一个插件加载器，基本功能皆是通过插件而来，
+    这同时也意味着，插件可以拥有很高的自由度，
+    成为整个编译的中间件之一。

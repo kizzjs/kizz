@@ -13,6 +13,7 @@ tracker: null
 plugins:
   - kizz-markdown
   - kizz-guess-tags-en
+  - kizz-guess-title
 registry: https://registry.npm.taobao.org
 theme: kizz-theme-paper
 log:

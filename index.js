@@ -44,7 +44,7 @@ co(function* () {
     mkdirp.sync(".cache/node_modules");
     app.use(function *(next) {
         yield next;
-        context.debug(this);
+        context.debug(JSON.stringify(this, null, 4));
         objCache.set({
             config: context.config,
             files: context.changedFiles.concat(context.unchangedFiles),

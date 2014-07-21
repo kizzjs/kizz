@@ -24,11 +24,6 @@ Still coding. The alpha version may come out this summer.
 
     Will use pandoc if avaliable, otherwise Marked will be the Markdown Engine.
     
-- Emacs Org Support
-
-    Emacs Org to HTML via Eamcs Lisp.
-    See https://github.com/zenozeng/kizz-org
-
 - Compiler Cache
     
     Only the changed files will be compiled. 
@@ -75,9 +70,19 @@ kizz build
 
 ### Preview
 
+Kizz doesn't provide `kizz preview`, 
+because there are already a lot of great things.
+
 ```
-sudo npm install http-server -g
-http-server ./public -p 8080
+cd public
+python -m SimpleHTTPServer
+```
+
+or
+
+```
+cd public
+php -S localhost:8000
 ```
 
 ### Update
@@ -117,11 +122,6 @@ sudo npm update -g kizz
 ### Why Generator Functions?
 
 TODO
-
-### 为什么文章顶部没有类似 Jekyll 的配置 yaml？
-
-个人认为这样打乱写作的纯粹性。
-这些繁琐的东西应该交给程序自己去管理。
 
 ### 与 Farbox 的不同？
 

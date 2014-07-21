@@ -1,5 +1,8 @@
 # 关于 Generator
 
+Async, Promise, Generator　是 Javascript 三种语法。
+虽然 generator 现在刚刚开始发展，但是我还是更加看好它，因为它很自然。
+
 ## 跳出流程控制
 
 一个函数控制整个流程。

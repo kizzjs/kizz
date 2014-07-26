@@ -8,9 +8,7 @@ var co = require("co"),
 
 var context = {},
     app = new (require("beads"))(context),
-    PluginManager = require("./lib/plugin-manager"),
-    objCache = new (require("./lib/obj-cache")),
-    File = require("./lib/file");
+    PluginManager = require("./lib/plugin-manager");
 
 context.log = console.log;
 context.error = console.log;
@@ -34,22 +32,23 @@ co(function* () {
     }
     context.config = config;
 
+    mkdirp.sync("node_modules");
+
     ////////////////////////////
     //
     // Load plugins & theme
     //
     ////////////////////////////
 
-    // init cache
-    mkdirp.sync(".cache/node_modules");
     app.use(function *(next) {
         yield next;
         context.debug(JSON.stringify(this, null, 4));
-        objCache.set({
+        var cache = {
             config: context.config,
             files: context.changedFiles.concat(context.unchangedFiles),
             time: (new Date()).getTime()
-        });
+        };
+        yield fs.writeFile('.cache.json', JSON.stringify(cache, null, 4));
     });
 
     // init plugin manager
@@ -97,11 +96,15 @@ co(function* () {
     //
     ////////////////////////////
 
-    var cache = objCache.get();
+    var cache;
+    try {
+        cache = JSON.parse(fs.readFile('.cache.json', {encoding: 'UTF-8'}));
+    } catch(e) {
+        cache = {config: {plugins: []}};
+    }
 
     var sourceFiles = yield walkContent;
 
-    if(!cache) cache = {config: {plugins: []}};
     var configChanged = (JSON.stringify(cache.config) != JSON.stringify(config));
     if(!cache.time || configChanged) {
         cache.time = 0;

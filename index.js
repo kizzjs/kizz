@@ -8,8 +8,8 @@ var co = require("co"),
 
 var context = {},
     app = new (require("beads"))(context),
-    PluginManager = require("./lib/pluginManager"),
-    objCache = new (require("./lib/objCache")),
+    PluginManager = require("./lib/plugin-manager"),
+    objCache = new (require("./lib/obj-cache")),
     File = require("./lib/file");
 
 context.log = console.log;

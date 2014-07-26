@@ -106,14 +106,15 @@ sudo npm update -g kizz
 ```javascript
 {
     "path": "filepath",
-    "mtime": "modified time (Date Object)",
     "extname": "extname", // ".md"
     "dirname": "dirname",
     "basename": "basename"
     "content": "html", // after kizz-markdown
     "title": "title", // after kizz-markdown
+    "modifiedTime": "git/fs modified time, Y-m-d H:i:s", // after kizz-guess-time
+    "createTime": "git/fs create time, Y-m-d H:i:s", // after kizz-guess-time
     "link": "link for the post (optional)",
-    "tags": ["tag1", "tag2"] // after kizz-guess-tags-en
+    "tags": ["tag1", "tag2"] // after kizz-guess-tags
 }
 ```
 
@@ -121,7 +122,7 @@ sudo npm update -g kizz
 
 ### Why Generator Functions?
 
-TODO
+Gernerator 是最自然的一种书写异步方式，让人觉得很惊艳。
 
 ### 与 Farbox 的不同？
 

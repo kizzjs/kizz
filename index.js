@@ -16,18 +16,8 @@ co(function* () {
     //
     ////////////////////////////
 
-    var config;
-    try {
-        config = yield fs.readFile('config.yml', 'utf-8');
-        config = yaml.safeLoad(config);
-    } catch(e) {
-        logger.error("Fail to parse config.yml");
-        throw e;
-    }
-
-    logger.setLevel(config.log);
-
-    mkdirp.sync("node_modules");
+    var config = yield fs.readFile('config.yml', 'utf-8');
+    config = yaml.safeLoad(config);
 
     ////////////////////////////
     //
@@ -53,6 +43,8 @@ co(function* () {
     ////////////////////////////
 
     context.config = config;
+
+    logger.setLevel(config.log);
     context.logger = logger;
 
     app.run(function(err) {

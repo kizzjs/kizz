@@ -78,7 +78,7 @@ rm -rf node_modules
 ### Preview
 
 Kizz doesn't provide `kizz preview`, 
-because there are already a lot of great things.
+because there are already a lot of great tools.
 
 ```
 cd public
@@ -118,8 +118,8 @@ sudo npm update -g kizz
     "basename": "basename"
     "content": "html", // after kizz-markdown
     "title": "title", // after kizz-markdown
-    "modifiedTime": "git/fs modified time, Y-m-d H:i:s", // after kizz-guess-time
-    "createTime": "git/fs create time, Y-m-d H:i:s", // after kizz-guess-time
+    "modifiedTime": "git/fs modified time (ISO String, eg. 2014-07-27T04:29:14.090Z)",
+    "createTime": "git/fs create time (ISO String, eg. 2014-07-27T04:29:14.090Z)",
     "link": "link for the post (optional)",
     "tags": ["tag1", "tag2"] // after kizz-guess-tags
 }

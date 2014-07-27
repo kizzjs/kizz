@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "keywords": [
     "kizz"
   ],
@@ -26,6 +26,10 @@
     "co-fs": "^1.2.0",
     "fs.extra": "^1.2.1",
     "js-yaml": "^3.1.0",
+    "kizz-guess-tags": "latest",
+    "kizz-markdown": "latest",
+    "kizz-theme-paper": "latest",
+    "log4js": "^0.6.16",
     "underscore": "^1.6.0",
     "walk": "^2.3.3"
   }

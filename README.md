@@ -1,8 +1,6 @@
 # kizz
 
-Relaxing blog system / static site generator
-
-If there’s one word to describe kizz, it is relax. 
+Relaxing blog system / static site generator.
 
 ## Status
 
@@ -31,6 +29,16 @@ Still coding. The alpha version may come out this summer.
 - FileSystem Based Generator
 
     Use file's modified timestamp and filename for date and title
+    
+    Different form hexo and jekyll,
+    you can use the following file structrue to organize your posts.
+
+    ```
+    content/articleName/index.md
+    content/articleName/image1.jpg
+    content/articleName/image2.jpg
+    ```
+
     目录结构会被保留。
     用你最喜欢的方式组织你的文件吧，那同时也是你的URL构成方式。
 

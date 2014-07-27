@@ -1,3 +1,3 @@
 #!/bin/zsh
-rm .cache/cache.json
-gnode ../index.js
+rm .cache.json
+node --harmony ../index.js

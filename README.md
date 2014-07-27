@@ -65,7 +65,14 @@ Still coding. The alpha version may come out this summer.
 ### Build
 
 ```
-kizz build
+kizz
+```
+
+### Clean Cache
+
+```
+rm .cache.json
+rm -rf node_modules
 ```
 
 ### Preview
@@ -119,6 +126,12 @@ sudo npm update -g kizz
 ```
 
 ## FAQ
+
+### Why NodeJS?
+
+- NPM is great.
+
+- Javascript is great & easy for theme developing.
 
 ### Why Generator Functions?
 

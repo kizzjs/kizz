@@ -164,3 +164,18 @@ Gernerator 是最自然的一种书写异步方式，让人觉得很惊艳。
     Kizz 的核心只是一个插件加载器，基本功能皆是通过插件而来，
     这同时也意味着，插件可以拥有很高的自由度，
     成为整个编译的中间件之一。
+
+### With Dropbox / Seafile?
+
+Simply `kizz watch` and sync files to /contents .
+
+### Build a private site with KIZZ?
+
+Install [isso](http://posativ.org/isso/), and listen on 127.0.0.1:1234;
+
+```
+Nginx -> HTTP Auth -> {
+    / => /public
+    /comments => 127.0.0.1:1234
+}
+```

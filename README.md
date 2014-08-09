@@ -50,6 +50,8 @@ Still coding. The alpha version may come out this summer.
     This is based on the content and path of each file.
     And great thanks to NaturalNode's general natural language facilities.
 
+    You can, of course, overwrite the tags by define `tags` in yaml front matter.
+
 - Powerful Theme System
 
     A theme is also a middleware (like plugins).
@@ -80,7 +82,6 @@ kizz
 
 ```
 rm .cache.json
-rm -rf node_modules
 ```
 
 ### Preview

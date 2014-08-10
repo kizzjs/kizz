@@ -75,13 +75,13 @@ Still coding. The alpha version may come out this summer.
 ### Build
 
 ```
-kizz
+kizz build
 ```
 
-### Clean Cache
+### Rebuild all
 
 ```
-rm .cache.json
+kizz rebuild
 ```
 
 ### Preview
@@ -99,6 +99,18 @@ or
 ```
 cd public
 php -S localhost:8000
+```
+
+### Install a middleware
+
+```
+npm install kizz-fs
+```
+
+### Uninstall a middleware
+
+```
+npm uninstall kizz-fs
 ```
 
 ### Update

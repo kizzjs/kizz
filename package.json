@@ -25,6 +25,7 @@
     "co-child-process": "0.0.3",
     "co-fs": "^1.2.0",
     "co-fs-plus": "^0.3.1",
+    "isbinaryfile": "^2.0.1",
     "kizz-guess-tags": "latest",
     "kizz-markdown": "latest",
     "kizz-theme-paper": "latest",

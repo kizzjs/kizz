@@ -1,6 +1,0 @@
-{
-    logger
-    changedFiles
-    unchangedFiles
-    removedFiels
-}

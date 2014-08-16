@@ -6,7 +6,22 @@ module.exports = function(app) {
             site: {
                 name: "Site Name Here",
                 url: "http://example.com"
+            },
+            source: {
+                type: "fs",
+                url: "./content/"
             }
+
+            // source: {
+            //     type: "seafile",
+            //     url: "http://seafile.example.com/",
+            //     token: "YOUR AUTH TOKEN"
+            // }
+
+            // source: {
+            //     type: "git",
+            //     url: "https://github.com/zenozeng/kizz.git"
+            // }
         }
 
         yield next;

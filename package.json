@@ -25,13 +25,11 @@
     "co-child-process": "0.0.3",
     "co-fs": "^1.2.0",
     "co-fs-plus": "^0.3.1",
-    "fs.extra": "^1.2.1",
-    "js-yaml": "^3.1.0",
     "kizz-guess-tags": "latest",
     "kizz-markdown": "latest",
     "kizz-theme-paper": "latest",
     "log4js": "^0.6.16",
     "underscore": "^1.6.0",
-    "walk": "^2.3.3"
+    "watch": "^0.11.0"
   }
 }

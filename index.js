@@ -2,20 +2,22 @@ var co = require("co"),
     fs = require("co-fs"),
     logger = require("log4js").getLogger(),
     context = {},
+    argv = process.argv,
+    cwd = process.cwd(),
     app = new (require("beads"))(context);
 
 co(function* () {
 
     // init context
-    context.argv = process.argv;
-    context.cwd = process.cwd;
+    context.argv = argv;
+    context.cwd = cwd;
     context.logger = logger;
 
     // load config
     require(cwd + "/config/index.js")(app);
 
     // load core middleswares
-    ["lib/kizz-fs", "lib/kizz-git"].forEach(function(middleware) {
+    ["./lib/storage.js", "./lib/files.js"].forEach(function(middleware) {
         require(middleware)(app);
     });
 

@@ -24,6 +24,7 @@
     "co": "~3.0.6",
     "co-child-process": "0.0.3",
     "co-fs": "^1.2.0",
+    "co-fs-plus": "^0.3.1",
     "fs.extra": "^1.2.1",
     "js-yaml": "^3.1.0",
     "kizz-guess-tags": "latest",

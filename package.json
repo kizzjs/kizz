@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "keywords": [
     "kizz"
   ],
@@ -32,7 +32,6 @@
     "log4js": "^0.6.16",
     "moment": "^2.8.1",
     "simhash": "^0.1.0",
-    "underscore": "^1.6.0",
     "watch": "^0.11.0"
   }
 }

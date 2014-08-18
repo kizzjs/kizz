@@ -17,7 +17,7 @@ co(function* () {
     require(cwd + "/config/index.js")(app);
 
     // load core middleswares
-    ["./lib/storage.js", "./lib/files.js"].forEach(function(middleware) {
+    ["./lib/storage.js", "./lib/files.js", "kizz-markdown"].forEach(function(middleware) {
         require(middleware)(app);
     });
 

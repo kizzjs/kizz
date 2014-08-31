@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "keywords": [
     "kizz"
   ],
@@ -10,7 +10,7 @@
     "url": "https://github.com/zenozeng/kizz/issues",
     "email": "zenoofzeng@gmail.com"
   },
-  "license": "GPLv2",
+  "license": "MIT",
   "author": {
     "name": "Zeno Zeng",
     "email": "zenoofzeng@gmail.com",

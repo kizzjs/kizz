@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "keywords": [
     "kizz"
   ],
@@ -32,7 +32,6 @@
     "kizz-markdown": "latest",
     "kizz-theme-paper": "latest",
     "log4js": "^0.6.16",
-    "moment": "^2.8.1",
     "simhash": "^0.1.0",
     "version-storage": "0.0.6",
     "watch": "^0.11.0"

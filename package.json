@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "keywords": [
     "kizz"
   ],
@@ -25,6 +25,7 @@
     "co-child-process": "0.0.3",
     "co-fs": "^1.2.0",
     "co-fs-plus": "^0.3.1",
+    "fs-storage": "0.0.2",
     "gnode-esprima-fb": "0.0.8-a",
     "isbinaryfile": "^2.0.1",
     "kizz-guess-tags": "latest",
@@ -33,6 +34,7 @@
     "log4js": "^0.6.16",
     "moment": "^2.8.1",
     "simhash": "^0.1.0",
+    "version-storage": "0.0.6",
     "watch": "^0.11.0"
   }
 }

@@ -1,5 +1,9 @@
 # Kizz
 
+## Status
+
+Still coding. The alpha version may come out in 2014.10.
+
 ## Features
 
 - Incremental generation

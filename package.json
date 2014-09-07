@@ -1,6 +1,6 @@
 {
   "name": "kizz",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "keywords": [
     "kizz"
   ],
@@ -20,7 +20,7 @@
     "kizz": "index.js"
   },
   "dependencies": {
-    "beads": "^0.1.2",
+    "beads": "^0.2.1",
     "co": "~3.0.6",
     "co-child-process": "0.0.3",
     "co-fs": "^1.2.0",

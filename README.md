@@ -41,3 +41,15 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
     https://github.com/visionmedia/co/wiki
 
 - Koajs
+
+### Why not farbox?
+
+For:
+
+- self hosting (private writing)
+
+- auto guess tags / timestamp
+
+- multi-user
+
+- seafile

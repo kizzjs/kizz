@@ -28,7 +28,9 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
 
 - Sometimes we want to use dropbox or seafile to sync files
 
-    With dropbox, it's possible to let my girl friend to use kizz. Simply run `kizz watch` and dropbox client in my server, the site will be automatically built when my girl firend updates the markdown files in dropbox.
+    With seafile, it's possible to let my girl friend to use kizz. Simply run `kizz watch` and seafile client in my server, the site will be automatically built when my girl firend updates the markdown files in seafile.
+
+    https://github.com/haiwen/seafile
 
 - We may need storage for extra information
 
@@ -53,3 +55,5 @@ For:
 - multi-user
 
 - seafile
+
+- https

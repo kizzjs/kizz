@@ -34,6 +34,15 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
 
 - We may need storage for extra information
 
+### But why storage? State is evil!
+
+- Meta Data should be saved in DB
+
+    Without a Database, all these things have to be typed by human being.
+    For me, that's worse.
+
+    为了用户使用的简单性，我宁可牺牲架构的简单性。
+
 ### Why generator?
 
 - The syntax is simply and sexy

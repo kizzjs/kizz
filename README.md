@@ -43,8 +43,9 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
     Without a Database, all these things have to be typed by human being.
     For me, that's worse.
 
-    以及，如果没有数据库，那么比如用户突然想从 dropbox 迁出到 git，
-    那么所有的历史记录就丢失了。
+    以及，而如果没有数据库，仅使用 git/seafile/dropbox 的元数据作为数据库，
+    那么比如用户突然想从 dropbox 迁出到 git，
+    所有的历史记录就会丢失了。
     这种情况下，使用 dropbox/git 作为数据库反而成了一种隐藏状态。
 
 - 文章和 meta data 是不同的东西，它们应该被分离，保持输入的纯粹性。

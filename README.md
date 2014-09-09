@@ -14,6 +14,8 @@ Still coding. The alpha version may come out in 2014.10.
 
     You can, of course, overwrite the tags by define tags in yaml front matter.
 
+- [TODO] Multi-author for single post (with kizz-git / kizz-seafile)
+
 ## Usage
 
 kizz build (Incremental generation)
@@ -64,6 +66,11 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
 
 - Koajs
 
+世界是变动着的。
+也许以后 promise 成为主流，
+或者 es7 的 async function 进入可用阶段。
+Anyway, 我认为 generator 是目前一个略有激进却挺中庸，综合各方面优势的一种选择。
+
 ### Why not farbox?
 
 For:
@@ -77,3 +84,4 @@ For:
 - seafile
 
 - https
+

@@ -49,6 +49,10 @@ kizz rebuild N (rebuild changed files and  N latest unchanged files)
 
 - 文章和 meta data 是不同的东西，它们应该被分离，保持输入的纯粹性。
 
+    而且写回到文件会有一大堆问题，比如：
+
+    - 难以区分这是用户设置还是程序生成（难以作为覆盖标准）
+
 ### Why generator?
 
 - The syntax is simply and sexy

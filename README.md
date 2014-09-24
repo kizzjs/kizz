@@ -21,6 +21,17 @@ Still coding. The alpha version may come out in 2014.10.
 
 ## Usage
 
+### Init
+
+```bash
+sudo npm install -g kizz
+cd myblog
+kizz init
+npm install
+```
+
+### Build
+
 kizz build (Incremental generation)
 
 kizz rebuild (Total rebuild)

@@ -28,9 +28,7 @@ GET /posts
 
 (in RAM)
 
-Will return all posts.
-
-Query are provided by server.
+不会分页，毕竟几千篇文章的索引也没多大。
 
 ### List all posts in dir
 

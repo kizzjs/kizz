@@ -1,22 +1,15 @@
 # RESTful API 设计文档
 
 - GET
-- POST
 
-## 后端提供的东西
+- POST
 
 后端会认为作者提供的信息不可信（多人协作可能会有奇怪的东西混进来）。
 后端本质上只有读操作，没有写操作。
 
-- Gavatar Base64 (Cached in RAM)
+- Gavatar (Cached in RAM, 输出的时候直接写到流里就好，中间件形式接入)
 
-- Google Analytics API 接入
-
-## Pull Github
-
-```
-POST /github/pull
-```
+- Google Analytics API 接入（中间件形式）
 
 ## Posts
 
@@ -118,3 +111,9 @@ GET /categories
 ```
 
 (in RAM)
+
+## Pull Github
+
+```
+POST /github/pull
+```

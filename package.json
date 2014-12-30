@@ -28,6 +28,7 @@
     "fs-storage": "0.0.2",
     "gnode-esprima-fb": "0.0.8-a",
     "isbinaryfile": "^2.0.1",
+    "js-git": "^0.7.7",
     "kizz-markdown": "latest",
     "lodash": "^2.4.1",
     "log4js": "^0.6.16",

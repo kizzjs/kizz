@@ -29,6 +29,22 @@ Still coding. The alpha version may come out in 2015.01.
 
 - 内容是被动态组装上样式的，内容归内容，样式归样式
 
+## Kizz Design
+
+### Compile Time
+
+- index (with metadata and gitlog)
+
+- feed
+
+### Frontend
+
+- Index based search (path, metadata)
+
+### Github API
+
+- Full-text search
+
 ## Requirements
 
 ```bash

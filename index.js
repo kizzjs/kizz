@@ -48,6 +48,12 @@ glob('contents/**/*.md', function(err, files) {
                 file.contents = undefined;
                 return file;
             });
+            files = files.sort(function(a, b) {
+                var time = [a, b].map(function(file) {
+                    return (file.commits[0] && (new Date(file.commits[0].date)).getTime()) || Infinity;
+                });
+                return time[1] - time[0];
+            });
             fs.writeFile('index.json', JSON.stringify(files, null, 4));
         }
     });

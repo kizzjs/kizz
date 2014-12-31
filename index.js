@@ -1,13 +1,17 @@
 var gitlog = require('./lib/gitlog');
 var getAvatar = require('./lib/avatar');
+var glob = require('glob');
+var path = require('path');
 
-gitlog(process.cwd(), function(err, data) {
-    var commits = data.map(function(commit) {
-        commit.author = {
-            name: commit.author.name,
-            avatar: getAvatar(commit.author.email)
-        };
-        return commit;
+glob('contents/**/*.md', function(err, files) {
+    var cwd = process.cwd();
+    files.forEach(function(file) {
+        gitlog(file, cwd, function(err, data) {
+            if(err) {
+                throw new Error(err);
+            } else {
+                console.log(data);
+            }
+        });
     });
-    console.log(commits);
 });

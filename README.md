@@ -10,5 +10,5 @@ Still coding. The alpha version may come out in 2015.01.
 ## Requirements
 
 ```bash
-sudo apt-get install git
+sudo apt-get install git npm
 ```

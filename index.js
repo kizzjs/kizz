@@ -4,6 +4,8 @@ var fs = require('fs');
 var gitlog = require('./lib/gitlog');
 var getAvatar = require('./lib/avatar');
 var path = require('path');
+var getFrontMatter = require('yaml-front-matter').loadFront;
+var _ = require('lodash');
 
 glob('contents/**/*.md', function(err, files) {
     var cwd = process.cwd();
@@ -32,9 +34,21 @@ glob('contents/**/*.md', function(err, files) {
             throw new Error(err);
         } else {
             files = files.map(function(file) {
+                var matter = getFrontMatter(file.contents);
+                if(!matter.title) {
+                    var match = file.contents.match(/^#[ ]*(.*)$/m);
+                    if(!match) {
+                        matter.title = path.basename(file.path, path.extname(file.path));
+                    } else {
+                        matter.title = match && match[1];
+                    }
+                }
+                matter.__content = undefined;
+                _.assign(file, matter);
+                file.contents = undefined;
                 return file;
             });
-            console.log(JSON.stringify(files, null, 4));
+            fs.writeFile('index.json', JSON.stringify(files, null, 4));
         }
     });
 });

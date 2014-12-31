@@ -45,6 +45,22 @@ Still coding. The alpha version may come out in 2015.01.
 
 - Full-text search
 
+## 目录结构
+
+### 源文件
+- /contents 博客源文件
+- config.json 博客配置
+
+### 编译产生
+- index.json 编译产生的索引文件，包括 metadata、gitlog
+- feed.xml Atom Feed
+
+### 主题文件
+- index.html
+- 404.html （用于 github rewrite）
+- theme/ （其他 js、css 之类的东西）
+
+
 ## Requirements
 
 ```bash

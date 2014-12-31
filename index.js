@@ -33,6 +33,7 @@ glob('contents/**/*.md', function(err, files) {
         if(err) {
             throw new Error(err);
         } else {
+            // parse metadata
             files = files.map(function(file) {
                 var matter = getFrontMatter(file.contents);
                 if(!matter.title) {
@@ -43,16 +44,30 @@ glob('contents/**/*.md', function(err, files) {
                         matter.title = match && match[1];
                     }
                 }
+                file.contents = matter.__content;
                 matter.__content = undefined;
                 _.assign(file, matter);
-                file.contents = undefined;
                 return file;
             });
+
+            // sort by commit time
             files = files.sort(function(a, b) {
                 var time = [a, b].map(function(file) {
                     return (file.commits[0] && (new Date(file.commits[0].date)).getTime()) || Infinity;
                 });
                 return time[1] - time[0];
+            });
+
+            // generate atom feed
+            var config = fs.readFileSync('config.json');
+            config = JSON.parse(config);
+            var feed = require('./lib/feed')(config, files);
+            fs.writeFileSync('feed.xml', feed);
+
+            // write to index
+            files = files.map(function(file) {
+                file.contents = null;
+                return file;
             });
             fs.writeFile('index.json', JSON.stringify(files, null, 4));
         }

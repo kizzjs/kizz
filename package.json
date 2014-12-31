@@ -1,39 +1,23 @@
 {
-  "name": "kizz",
-  "version": "0.2.14",
-  "keywords": [
-    "kizz"
-  ],
-  "description": "kizz",
-  "homepage": "https://github.com/zenozeng/kizz",
-  "bugs": {
-    "url": "https://github.com/zenozeng/kizz/issues",
-    "email": "zenoofzeng@gmail.com"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Zeno Zeng",
-    "email": "zenoofzeng@gmail.com",
-    "url": "https://zenozeng.com"
-  },
-  "bin": {
-    "kizz": "index.js"
-  },
-  "dependencies": {
-    "beads": "^0.2.1",
-    "co": "~3.0.6",
-    "co-child-process": "0.0.3",
-    "co-fs": "^1.2.0",
-    "co-fs-plus": "^0.3.1",
-    "fs-storage": "0.0.2",
-    "gnode-esprima-fb": "0.0.8-a",
-    "isbinaryfile": "^2.0.1",
-    "js-git": "^0.7.7",
-    "kizz-markdown": "latest",
-    "lodash": "^2.4.1",
-    "log4js": "^0.6.16",
-    "simhash": "^0.1.0",
-    "version-storage": "0.0.7",
-    "watch": "^0.11.0"
-  }
+    "name": "kizz",
+    "version": "0.3.0",
+    "keywords": [
+        "kizz"
+    ],
+    "description": "kizz",
+    "homepage": "https://github.com/zenozeng/kizz",
+    "bugs": {
+        "url": "https://github.com/zenozeng/kizz/issues",
+        "email": "zenoofzeng@gmail.com"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Zeno Zeng",
+        "email": "zenoofzeng@gmail.com",
+        "url": "https://zenozeng.com"
+    },
+    "bin": {
+        "kizz": "index.js"
+    },
+    "dependencies": {}
 }

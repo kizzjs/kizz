@@ -1,14 +1,5 @@
 var gitlog = require('./lib/gitlog');
-
-var gravatar = require('gravatar');
-
-var getAvatar = function(email) {
-    var cache = {};
-    if(!cache.email) {
-        cache.email = gravatar.url(email, {s: '100', r: 'x', d: 'retro'}, true);
-    }
-    return cache.email;
-};
+var getAvatar = require('./lib/avatar');
 
 gitlog(process.cwd(), function(err, data) {
     var commits = data.map(function(commit) {

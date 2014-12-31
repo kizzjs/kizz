@@ -17,6 +17,8 @@ Still coding. The alpha version may come out in 2015.01.
 
 - 改动主题需要重新 build，对主题开发非常痛苦
 
+- 生成了很多小文件，还挺影响管理和网络传输
+
 ## 对 Kizz 的期望
 
 - 使用 git log 的信息

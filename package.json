@@ -1,23 +1,25 @@
 {
-    "name": "kizz",
-    "version": "0.3.0",
-    "keywords": [
-        "kizz"
-    ],
-    "description": "kizz",
-    "homepage": "https://github.com/zenozeng/kizz",
-    "bugs": {
-        "url": "https://github.com/zenozeng/kizz/issues",
-        "email": "zenoofzeng@gmail.com"
-    },
-    "license": "MIT",
-    "author": {
-        "name": "Zeno Zeng",
-        "email": "zenoofzeng@gmail.com",
-        "url": "https://zenozeng.com"
-    },
-    "bin": {
-        "kizz": "index.js"
-    },
-    "dependencies": {}
+  "name": "kizz",
+  "version": "0.3.0",
+  "keywords": [
+    "kizz"
+  ],
+  "description": "kizz",
+  "homepage": "https://github.com/zenozeng/kizz",
+  "bugs": {
+    "url": "https://github.com/zenozeng/kizz/issues",
+    "email": "zenoofzeng@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Zeno Zeng",
+    "email": "zenoofzeng@gmail.com",
+    "url": "https://zenozeng.com"
+  },
+  "bin": {
+    "kizz": "index.js"
+  },
+  "dependencies": {
+    "gravatar": "^1.1.0"
+  }
 }

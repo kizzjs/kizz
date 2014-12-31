@@ -12,3 +12,7 @@ Still coding. The alpha version may come out in 2015.01.
 ```bash
 sudo apt-get install git npm
 ```
+
+## Dev
+
+http://semver.org/lang/zh-CN/

@@ -6,3 +6,9 @@ Kizz 试图为写作提供一组合理的预设，
 ## Status
 
 Still coding. The alpha version may come out in 2015.01.
+
+## Requirements
+
+```bash
+sudo apt-get install git
+```

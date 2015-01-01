@@ -17,6 +17,10 @@ Still coding. The alpha version may come out in 2015.01.
 
 - 改动主题需要重新 build，对主题开发非常痛苦
 
+- 生成了很多小文件，还挺影响管理和网络传输
+
+- 对于习惯制作 Single Page App 的前端开发者而言，在编译时使用模板有时会成为一种负担
+
 ## 对 Kizz 的期望
 
 - 使用 git log 的信息
@@ -28,6 +32,8 @@ Still coding. The alpha version may come out in 2015.01.
 - 按照文件目录去组织文章
 
 - 内容是被动态组装上样式的，内容归内容，样式归样式
+
+- 轻松 SPA
 
 ## Kizz Design
 

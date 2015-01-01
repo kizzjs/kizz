@@ -43,10 +43,11 @@ glob('contents/**/*.md', function(err, files) {
             });
 
             // generate atom feed
+            // called using sync, otherwise the contents maybe already set to null
             var config = fs.readFileSync('config.json');
             config = JSON.parse(config);
             var feed = require('./lib/feed')(config, files);
-            fs.writeFileSync('feed.xml', feed);
+            fs.writeFile('feed.xml', feed);
 
             // write to index
             files = files.map(function(file) {

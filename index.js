@@ -1,11 +1,9 @@
 var glob = require('glob');
 var async = require('async');
 var fs = require('fs');
-var gitlog = require('./lib/gitlog');
-var getAvatar = require('./lib/avatar');
 var path = require('path');
-var getFrontMatter = require('yaml-front-matter').loadFront;
-var _ = require('lodash');
+var parseMetadata = require('./lib/metadata');
+var gitlog = require('./lib/gitlog');
 
 glob('contents/**/*.md', function(err, files) {
     var cwd = process.cwd();
@@ -34,21 +32,7 @@ glob('contents/**/*.md', function(err, files) {
             throw new Error(err);
         } else {
             // parse metadata
-            files = files.map(function(file) {
-                var matter = getFrontMatter(file.contents);
-                if(!matter.title) {
-                    var match = file.contents.match(/^#[ ]*(.*)$/m);
-                    if(!match) {
-                        matter.title = path.basename(file.path, path.extname(file.path));
-                    } else {
-                        matter.title = match && match[1];
-                    }
-                }
-                file.contents = matter.__content;
-                matter.__content = undefined;
-                _.assign(file, matter);
-                return file;
-            });
+            files = files.map(parseMetadata);
 
             // sort by commit time
             files = files.sort(function(a, b) {

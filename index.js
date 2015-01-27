@@ -94,9 +94,14 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 });
             };
 
-            var compiled = _.template(fs.readFileSync());
+            var compiled = _.template(fs.readFileSync(path.join(__dirname, 'templates/page.html')));
             var renderFile = function(filepath, object) {
-                var html = compiled(object);
+                var html = compiled({
+                    title: object.title,
+                    base: path.resolve('.', filepath),
+                    tags: object.tags,
+                    html: object.html
+                });
                 writeFile(filepath, html);
             };
 

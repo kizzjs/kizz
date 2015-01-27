@@ -119,6 +119,14 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 });
                 writeFile('index.json', JSON.stringify(files, null, 4));
 
+                // generate index.html
+                renderFile('index.html', {
+                    title: config.site.name,
+                    base: '.',
+                    tags: config.site.keywords && config.site.keywords.join(', '),
+                    html: config.site.description
+                });
+
                 // generate permalinks
                 files.forEach(function(file) {
                     var permalink = config.permalink(file);

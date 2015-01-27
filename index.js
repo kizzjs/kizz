@@ -7,6 +7,7 @@ var gitlog = require('./lib/gitlog');
 var cwd = process.cwd();
 var config = require(path.join(cwd, 'config.js'));
 var mkdirp = require('mkdirp');
+var _ = require('lodash');
 
 var cmd = process.argv[2];
 
@@ -93,6 +94,12 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 });
             };
 
+            var compiled = _.template(fs.readFileSync());
+            var renderFile = function(filepath, object) {
+                var html = compiled(object);
+                writeFile(filepath, html);
+            };
+
             var rimraf = require('rimraf');
             rimraf(targetDir, function() { // clear
                 // generate atom feed
@@ -110,8 +117,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 // generate permalinks
                 files.forEach(function(file) {
                     var permalink = config.permalink(file);
-                    console.log(file);
-                    writeFile(permalink, file.contents);
+                    renderFile(permalink, file);
                 });
             });
         }

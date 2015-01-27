@@ -4,10 +4,11 @@ var fs = require('fs');
 var path = require('path');
 var parseMetadata = require('./lib/metadata');
 var gitlog = require('./lib/gitlog');
+var cwd = process.cwd();
+var config = require(path.join(cwd, 'config.js'));
 
-glob('contents/**/*.md', function(err, files) {
-    var cwd = process.cwd();
-    var fn = function(file, callback){
+glob(path.join(config.source, '**/*.md'), function(err, files) {
+    var readFiles = function(file, callback){
         async.parallel([
             function(callback) {
                 gitlog(file, cwd, callback);
@@ -22,12 +23,12 @@ glob('contents/**/*.md', function(err, files) {
                 callback(null, {
                     commits: results[0],
                     contents: results[1],
-                    path: path.relative('contents/', file)
+                    path: path.relative(config.source, file)
                 });
             }
         });
     };
-    async.map(files, fn, function(err, files) {
+    async.map(files, readFiles, function(err, files) {
         if(err) {
             throw new Error(err);
         } else {
@@ -42,19 +43,19 @@ glob('contents/**/*.md', function(err, files) {
                 return time[1] - time[0];
             });
 
+            var target = config.target;
+
             // generate atom feed
             // called using sync, otherwise the contents maybe already set to null
-            var config = fs.readFileSync('config.json');
-            config = JSON.parse(config);
             var feed = require('./lib/feed')(config, files);
-            fs.writeFile('feed.xml', feed);
+            fs.writeFile(path.join(target, 'feed.xml'), feed);
 
             // write to index
             files = files.map(function(file) {
                 file.contents = null;
                 return file;
             });
-            fs.writeFile('index.json', JSON.stringify(files, null, 4));
+            fs.writeFile(path.join(target, 'index.json'), JSON.stringify(files, null, 4));
         }
     });
 });

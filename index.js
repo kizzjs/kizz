@@ -6,6 +6,7 @@ var parseMetadata = require('./lib/metadata');
 var gitlog = require('./lib/gitlog');
 var cwd = process.cwd();
 var config = require(path.join(cwd, 'config.js'));
+var mkdirp = require('mkdirp');
 
 glob(path.join(config.source, '**/*.md'), function(err, files) {
     var readFiles = function(file, callback){
@@ -54,23 +55,33 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
 
             var targetDir = config.target;
 
-            // generate atom feed
-            // called using sync, otherwise the contents maybe already set to null
-            var feed = require('./lib/feed')(config, files);
-            fs.writeFile(path.join(targetDir, 'feed.xml'), feed);
+            var writeFile = function(filepath, contents) {
+                filepath = path.join(targetDir, filepath);
+                mkdirp(path.dirname(filepath), function() {
+                    fs.writeFile(path.join(targetDir, filepath), contents, function() {
+                        console.log('Generated: ' + filepath);
+                    });
+                });
+            };
 
-            // generate index.json
-            files = files.map(function(file) {
-                file.contents = null;
-                return file;
-            });
-            fs.writeFile(path.join(targetDir, 'index.json'), JSON.stringify(files, null, 4));
+            var rimraf = require('rimraf');
+            rimraf(targetDir, function() { // clear
+                // generate atom feed
+                // called using sync, otherwise the contents maybe already set to null
+                var feed = require('./lib/feed')(config, files);
+                writeFile('feed.xml', feed);
 
-            // generate permalinks
-            files.forEach(function(file) {
-                var permalink = config.permalink(file);
-                fs.writeFile(path.join(targetDir, permalink), file.contents, function() {
-                    console.log('Generated: ' + permalink);
+                // generate index.json
+                files = files.map(function(file) {
+                    file.contents = null;
+                    return file;
+                });
+                writeFile('index.json', JSON.stringify(files, null, 4));
+
+                // generate permalinks
+                files.forEach(function(file) {
+                    var permalink = config.permalink(file);
+                    writeFile(permalink, file.contents);
                 });
             });
         }

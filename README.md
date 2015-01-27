@@ -23,13 +23,11 @@ Still coding. The alpha version may come out in 2015.01.
 
 ## 对 Kizz 的期望
 
-- 使用 git log 的信息
+- 使用 git log 的信息，自动填充创建时间、修改时间和作者信息
 
 - 多人写作
 
 - 更加聪明的默认值，比如 title 从 yaml 头、Markdown H1 和文件名去猜测
-
-- 按照文件目录去组织文章
 
 - 内容是被动态组装上样式的，内容归内容，样式归样式
 

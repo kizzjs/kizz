@@ -98,7 +98,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
             var renderFile = function(filepath, object) {
                 var html = compiled({
                     title: object.title,
-                    base: path.resolve('.', filepath),
+                    base: path.relative(filepath, 'theme'),
                     tags: object.tags,
                     html: object.html
                 });

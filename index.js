@@ -8,6 +8,23 @@ var cwd = process.cwd();
 var config = require(path.join(cwd, 'config.js'));
 var mkdirp = require('mkdirp');
 
+var cmd = process.argv[2];
+
+// kizz server
+if(cmd === "server") {
+    var serveStatic = require('serve-static');
+    var http = require('http');
+    var finalhandler = require('finalhandler');
+
+    var dir = path.join(cwd, config.target);
+    var serve = serveStatic(dir, {index: ['index.html']});
+    http.createServer(function(req, res) {
+        serve(req, res, finalhandler(req, res));
+    }).listen(8000);
+    return;
+}
+
+// kizz build
 glob(path.join(config.source, '**/*.md'), function(err, files) {
     var readFiles = function(file, callback){
         async.parallel([
@@ -44,12 +61,24 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 return time[1] - time[0];
             });
 
+            var commonmark = require('commonmark');
+            var commonmarkParser = new commonmark.Parser();
+            var commonmarkRender = new commonmark.HtmlRenderer();
+
             files = files.map(function(file) {
                 delete file.__content;
+
+                // path info
                 file.dirname = path.dirname(file.path);
                 file.basename = path.basename(file.path, path.extname(file.path));
+
+                // time info
                 file.creationTime = file.commits[file.commits.length - 1].date;
                 file.modificationTime = file.commits[0].date;
+
+                // common mark
+                file.contents = commonmarkRender.render(commonmarkParser.parse(file.contents));
+
                 return file;
             });
 
@@ -58,7 +87,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
             var writeFile = function(filepath, contents) {
                 filepath = path.join(targetDir, filepath);
                 mkdirp(path.dirname(filepath), function() {
-                    fs.writeFile(path.join(targetDir, filepath), contents, function() {
+                    fs.writeFile(filepath, contents, function() {
                         console.log('Generated: ' + filepath);
                     });
                 });
@@ -73,7 +102,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
 
                 // generate index.json
                 files = files.map(function(file) {
-                    file.contents = null;
+                    // file.contents = null;
                     return file;
                 });
                 writeFile('index.json', JSON.stringify(files, null, 4));
@@ -81,6 +110,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 // generate permalinks
                 files.forEach(function(file) {
                     var permalink = config.permalink(file);
+                    console.log(file);
                     writeFile(permalink, file.contents);
                 });
             });

@@ -43,6 +43,13 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 return time[1] - time[0];
             });
 
+            files = files.map(function(file) {
+                delete file.__content;
+                return file;
+            });
+
+            console.log(files);
+
             var target = config.target;
 
             // generate atom feed

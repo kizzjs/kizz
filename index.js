@@ -77,7 +77,7 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 file.modificationTime = file.commits[0].date;
 
                 // common mark
-                file.contents = commonmarkRender.render(commonmarkParser.parse(file.contents));
+                file.html = commonmarkRender.render(commonmarkParser.parse(file.contents));
 
                 return file;
             });

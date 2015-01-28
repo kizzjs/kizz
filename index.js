@@ -77,6 +77,11 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 file.creationTime = file.commits.length > 0 && file.commits[file.commits.length - 1].date;
                 file.modificationTime = file.commits.length > 0 && file.commits[0].date;
 
+                // author
+                file.authors = _.uniq(file.commits.map(function(commit) {
+                    return JSON.stringify(commit.author);
+                }));
+
                 // common mark
                 file.html = commonmarkRender.render(commonmarkParser.parse(file.contents));
 
@@ -114,8 +119,14 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
 
                 // generate index.json
                 files = files.map(function(file) {
-                    // file.contents = null;
-                    return file;
+                    return {
+                        path: file.path,
+                        creationTime: file.creationTime,
+                        lastModifiedTime: file.lastModifiedTime,
+                        tags: file.tags,
+                        authors: file.authors,
+                        title: file.title
+                    };
                 });
                 writeFile('index.json', JSON.stringify(files, null, 4));
 

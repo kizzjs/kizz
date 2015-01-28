@@ -4,11 +4,10 @@
 {
     path: "relative file path from source/",
     commits: [],
+    tags: [],
     content: "html string",
     creationTime: "Date Object",
-    modificationTime: "Date Object",
-    title: "title",
-    dirname: "dirname",
-    basename: "basename (without ext)"
+    lastModifiedTime: "Date Object",
+    title: "title"
 }
 ```

@@ -16,3 +16,21 @@ kizz build
 ```bash
 kizz server
 ```
+
+## Router
+
+### Backbone
+
+```javascript
+routes: {
+    "": "index",
+    "tags/:tag": "tag",
+    "*whatever": function(route) {
+        if(KIZZ.router.isPost(route)) {
+            // post view
+        } else {
+            // 404 view
+        }
+    }
+}
+```

@@ -5,7 +5,7 @@ var path = require('path');
 var parseMetadata = require('./lib/metadata');
 var gitlog = require('./lib/gitlog');
 var cwd = process.cwd();
-var config = require(path.join(cwd, 'config.js'));
+var config = require('./lib/config');
 var mkdirp = require('mkdirp');
 var _ = require('lodash');
 
@@ -74,8 +74,8 @@ glob(path.join(config.source, '**/*.md'), function(err, files) {
                 file.basename = path.basename(file.path, path.extname(file.path));
 
                 // time info
-                file.creationTime = file.commits[file.commits.length - 1].date;
-                file.modificationTime = file.commits[0].date;
+                file.creationTime = file.commits.length > 0 && file.commits[file.commits.length - 1].date;
+                file.modificationTime = file.commits.length > 0 && file.commits[0].date;
 
                 // common mark
                 file.html = commonmarkRender.render(commonmarkParser.parse(file.contents));

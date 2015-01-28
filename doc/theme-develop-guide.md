@@ -26,7 +26,8 @@ routes: {
     "": "index",
     "tags/:tag": "tag",
     "*whatever": function(route) {
-        if(KIZZ.router.isPost(route)) {
+        if(KIZZ.isPost(route)) {
+            var post = KIZZ.getPost(route);
             // post view
         } else {
             // 404 view

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "glob": "^5.0.14",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "yaml-front-matter": "^3.2.3"
   }
 }

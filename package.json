@@ -24,6 +24,7 @@
     "commonmark": "^0.22.0",
     "glob": "^5.0.14",
     "lodash": "^3.10.1",
+    "shelljs": "^0.5.3",
     "yaml-front-matter": "^3.2.3"
   }
 }

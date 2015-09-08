@@ -22,6 +22,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "commonmark": "^0.22.0",
+    "fs-extra": "^0.24.0",
     "glob": "^5.0.14",
     "lodash": "^3.10.1",
     "shelljs": "^0.5.3",
